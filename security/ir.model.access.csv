@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_membership_member,membership.member,model_membership_member,,1,1,1,1
+access_membership_tier,membership.tier,model_membership_tier,,1,1,1,1
+access_communication_preference,membership.communication.preference,model_membership_communication_preference,,1,1,1,1

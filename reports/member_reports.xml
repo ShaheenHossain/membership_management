@@ -1,0 +1,24 @@
+<odoo>
+    <report
+        id="action_report_member"
+        model="membership.member"
+        string="Membership Card"
+        report_type="qweb-pdf"
+        name="membership_management.report_member_card"
+        file="membership_management.report_member_card"
+        print_report_name="'Membership Card - %s' % (object.name)"/>
+
+    <template id="report_member_card">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page">
+                    <h2>Membership Card</h2>
+                    <p>Name: <t t-esc="doc.name"/></p>
+                    <p>Role: <t t-esc="doc.role"/></p>
+                    <p>Status: <t t-esc="doc.status"/></p>
+                    <p>Join Date: <t t-esc="doc.join_date"/></p>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

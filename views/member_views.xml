@@ -1,0 +1,45 @@
+<odoo>
+    <record id="view_member_tree" model="ir.ui.view">
+        <field name="name">membership.member.list</field>
+        <field name="model">membership.member</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="email"/>
+                <field name="phone"/>
+                <field name="role"/>
+                <field name="status"/>
+            </list>
+        </field>
+    </record>
+
+
+
+
+    <record id="view_member_form" model="ir.ui.view">
+        <field name="name">membership.member.form</field>
+        <field name="model">membership.member</field>
+        <field name="arch" type="xml">
+            <form string="Member">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="member_type"/>
+                        <field name="id_number"/>
+                        <field name="email"/>
+                        <field name="phone"/>
+                        <field name="location"/>
+                        <field name="role"/>
+                        <field name="status"/>
+                        <field name="join_date"/>
+                        <field name="renewal_date"/>
+                        <field name="resignation_date"/>
+                        <field name="suspension_date"/>
+                        <field name="communication_preference_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

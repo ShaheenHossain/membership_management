@@ -1,0 +1,21 @@
+{
+    'name': 'Membership Management',
+    'version': '1.0',
+    'summary': 'Manage Membership Registrations and Profiles',
+    'description': 'Full Membership Management system with registration, tiers, communications, and reporting.',
+    'category': 'Membership',
+    'author': 'Md. Shaheen Hossain',
+    'website': 'https://eagle-erp.com',
+    'depends': ['base', 'mail'],
+    'data': [
+        'security/ir.model.access.csv',
+        'views/member_views.xml',
+        'views/membership_tier_views.xml',
+        'views/communication_preference_views.xml',
+        'reports/member_reports.xml',
+        'views/menuitems.xml',
+    ],
+    'installable': True,
+    'application': True,
+    'license': 'LGPL-3',
+}

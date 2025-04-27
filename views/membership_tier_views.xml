@@ -1,0 +1,29 @@
+<odoo>
+    <record id="view_membership_tier_form" model="ir.ui.view">
+        <field name="name">membership.tier.form</field>
+        <field name="model">membership.tier</field>
+        <field name="arch" type="xml">
+            <form string="Membership Tier">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_membership_tier_tree" model="ir.ui.view">
+        <field name="name">membership.tier.list</field>
+        <field name="model">membership.tier</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="description"/>
+            </list>
+        </field>
+    </record>
+
+
+</odoo>
