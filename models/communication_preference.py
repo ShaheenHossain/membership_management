@@ -10,3 +10,4 @@ class CommunicationPreference(models.Model):
         ('sms', 'SMS'),
         ('call', 'Call')
     ], string='Preference Type')
+

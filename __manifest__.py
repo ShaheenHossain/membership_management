@@ -10,6 +10,7 @@
     'data': [
         'security/ir.model.access.csv',
         'views/member_views.xml',
+        'views/member_category_views.xml',
         'views/membership_tier_views.xml',
         'views/communication_preference_views.xml',
         'reports/member_reports.xml',

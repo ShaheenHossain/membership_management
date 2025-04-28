@@ -6,10 +6,16 @@
         <field name="view_mode">list,form</field>
     </record>
 
+    <record id="action_member_categories" model="ir.actions.act_window">
+        <field name="name">Categories</field>
+        <field name="res_model">membership.member.category</field>
+        <field name="view_mode">list,form</field>
+    </record>
 
 
     <menuitem id="menu_membership_root" name="Membership" web_icon="membership_management,static/description/icon.png" sequence="1"/>
 
     <menuitem id="menu_membership_members" name="Members" parent="menu_membership_root" action="membership_management.action_member"/>
+    <menuitem id="menu_membership_categories" name="Categories" parent="menu_membership_root" action="membership_management.action_member_categories"/>
 
 </odoo>

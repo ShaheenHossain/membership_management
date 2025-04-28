@@ -32,4 +32,14 @@ class Member(models.Model):
     suspension_date = fields.Date(string='Suspension Date')
     communication_preference_ids = fields.One2many('membership.communication.preference', 'member_id', string='Communication Preferences')
 
+    member_category_id = fields.Many2one('membership.member.category', string='Member Category 02')
 
+
+    member_category = fields.Selection([
+        ('inter_federation', 'Inter-federation'),
+        ('federation', 'Federation'),
+        ('district', 'District'),
+        ('section', 'Section'),
+        ('cellule', 'Cellule'),
+        ('sous_cellule', 'Sous-cellule')
+    ], string='Member Category')

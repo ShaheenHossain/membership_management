@@ -9,6 +9,8 @@
                 <field name="phone"/>
                 <field name="role"/>
                 <field name="status"/>
+                <field name="member_category"/>
+                <field name="member_category_id"/>
             </list>
         </field>
     </record>
@@ -29,6 +31,8 @@
                         <field name="email"/>
                         <field name="phone"/>
                         <field name="location"/>
+                        <field name="member_category"/>
+                        <field name="member_category_id"/>
                         <field name="role"/>
                         <field name="status"/>
                         <field name="join_date"/>
