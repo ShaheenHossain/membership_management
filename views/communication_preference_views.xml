@@ -13,4 +13,16 @@
             </form>
         </field>
     </record>
+
+    <record id="view_communication_preference_tree" model="ir.ui.view">
+        <field name="name">membership.communication.preference.tree</field>
+        <field name="model">membership.communication.preference</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="member_id"/>
+                <field name="preference_type"/>
+            </list>
+        </field>
+    </record>
+
 </odoo>

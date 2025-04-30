@@ -1,49 +1,131 @@
 <odoo>
-    <record id="view_member_tree" model="ir.ui.view">
-        <field name="name">membership.member.list</field>
-        <field name="model">membership.member</field>
-        <field name="arch" type="xml">
-            <list>
-                <field name="name"/>
-                <field name="email"/>
-                <field name="phone"/>
-                <field name="role"/>
-                <field name="status"/>
-                <field name="member_category"/>
-                <field name="member_category_id"/>
-            </list>
-        </field>
-    </record>
-
-
-
-
     <record id="view_member_form" model="ir.ui.view">
         <field name="name">membership.member.form</field>
         <field name="model">membership.member</field>
         <field name="arch" type="xml">
             <form string="Member">
                 <sheet>
+                    <div class="oe_avatar" name="image_small">
+                        <field name="image_1920" widget="image" class="oe_avatar"
+                               options='{"preview_image": "avatar_128"}'/>
+                    </div>
+
+                    <div>
+                        <h2><field name="name" placeholder="e.g. Member Name"/></h2>
+                    </div>
+
                     <group>
-                        <field name="name"/>
-                        <field name="member_type"/>
-                        <field name="id_number"/>
-                        <field name="email"/>
-                        <field name="phone"/>
-                        <field name="location"/>
-                        <field name="member_category"/>
-                        <field name="member_category_id"/>
-                        <field name="role"/>
-                        <field name="status"/>
-                        <field name="join_date"/>
-                        <field name="renewal_date"/>
-                        <field name="resignation_date"/>
-                        <field name="suspension_date"/>
+                        <group>
+                            <field name="membership_number" readonly="1"/>
+                            <field name="member_type"/>
+                            <field name="id_number"/>
+                            <field name="email"/>
+                            <field name="phone"/>
+                            <field name="location"/>
+                            <field name="reference"/>
+                            <field name="member_category_id"/>
+                        </group>
+                        <group>
+                            <field name="role"/>
+                            <field name="status"/>
+                            <field name="membership_status" readonly="1"/>
+                            <field name="card_purchased"/>
+                            <field name="last_contribution_date"/>
+                            <field name="join_date"/>
+                            <field name="exit_reason"/>
+                        </group>
                         <field name="communication_preference_ids"/>
+
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
+
+    <record id="view_member_tree" model="ir.ui.view">
+        <field name="name">membership.member.list</field>
+        <field name="model">membership.member</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="reference"/>
+                <field name="phone"/>
+                <field name="role"/>
+                <field name="status"/>
+                <!--                <field name="member_category"/>-->
+                <field name="member_category_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="members_view_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="priority">10</field>
+        <field name="arch" type="xml">
+
+            <xpath expr="//group" position="before">
+                <div>
+                    <group>
+                        <group>
+                            <field name="membership_number_auto" string="Membership Number"/>
+                            <field name="id_number" string="ID Number"/>
+                            <field name="member_type" string="Member Type"/>
+
+                        </group>
+                    </group>
+                </div>
+            </xpath>
+
+            <xpath expr="//field[@name='function']" position="replace">
+                <field name="status"/>
+                <field name="membership_status" readonly="1"/>
+                <field name="card_purchased"/>
+                <field name="last_contribution_date"/>
+                <field name="join_date"/>
+                <field name="exit_reason"/>
+            </xpath>
+
+            <xpath expr="//field[@name='vat']" position="before">
+                <field name="member_category_id" string="Member Category"/>
+                <field name="reference" string="Reference"/>
+                <field name="role" string="Role"/>
+
+                <field name="communication_preference_ids"/>
+            </xpath>
+
+
+            <xpath expr="//field[@name='vat']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='category_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='title']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+<xpath expr="//field[@name='company_type']" position="attributes">
+    <attribute name="invisible">1</attribute>
+</xpath>
+
+            <!--<xpath expr="//field[@name='parent_id']" position="attributes">
+                <attribute name="string">Organization</attribute>
+            </xpath>
+-->
+
+            <!--
+                   <xpath expr="//field[@name='function']" position="attributes">
+                       <attribute name="placeholder">e.g. Director </attribute>
+                       <attribute name="string">Designation</attribute>
+                   </xpath>-->
+
+        </field>
+    </record>
+
+
 
 </odoo>

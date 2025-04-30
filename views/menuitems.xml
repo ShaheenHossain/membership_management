@@ -13,9 +13,12 @@
     </record>
 
 
+<!--
     <menuitem id="menu_membership_root" name="Membership" web_icon="membership_management,static/description/icon.png" sequence="1"/>
 
     <menuitem id="menu_membership_members" name="Members" parent="menu_membership_root" action="membership_management.action_member"/>
-    <menuitem id="menu_membership_categories" name="Categories" parent="menu_membership_root" action="membership_management.action_member_categories"/>
+-->
+
+    <menuitem id="menu_membership_category" name="Categories" parent="membership.menu_marketing_config_association" action="membership_management.action_member_categories" sequence="09"/>
 
 </odoo>
