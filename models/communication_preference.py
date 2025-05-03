@@ -4,7 +4,7 @@ class CommunicationPreference(models.Model):
     _name = 'membership.communication.preference'
     _description = 'Communication Preference'
 
-    member_id = fields.Many2one('membership.member', string='Member')
+    member_id = fields.Many2one('res.partner', string='Member')
     preference_type = fields.Selection([
         ('email', 'Email'),
         ('sms', 'SMS'),
