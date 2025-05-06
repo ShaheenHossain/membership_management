@@ -1,62 +1,4 @@
 <odoo>
-    <!--    <record id="view_member_form" model="ir.ui.view">
-            <field name="name">membership.member.form</field>
-            <field name="model">membership.member</field>
-            <field name="arch" type="xml">
-                <form string="Member">
-                    <sheet>
-                        <div class="oe_avatar" name="image_small">
-                            <field name="image_1920" widget="image" class="oe_avatar"
-                                   options='{"preview_image": "avatar_128"}'/>
-                        </div>
-
-                        <div>
-                            <h2><field name="name" placeholder="e.g. Member Name"/></h2>
-                        </div>
-
-                        <group>
-                            <group>
-                                <field name="membership_number" readonly="1"/>
-                                <field name="member_type"/>
-                                <field name="id_number"/>
-                                <field name="email"/>
-                                <field name="phone"/>
-                                <field name="location"/>
-                                <field name="reference"/>
-                                <field name="member_category_id"/>
-                            </group>
-                            <group>
-                                <field name="role"/>
-                                <field name="status"/>
-                                <field name="membership_status" readonly="1"/>
-                                <field name="card_purchased"/>
-                                <field name="last_contribution_date"/>
-                                <field name="join_date"/>
-                                <field name="exit_reason"/>
-                            </group>
-                            <field name="communication_preference_ids"/>
-
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
-
-        <record id="view_member_tree" model="ir.ui.view">
-            <field name="name">membership.member.list</field>
-            <field name="model">membership.member</field>
-            <field name="arch" type="xml">
-                <list>
-                    <field name="name"/>
-                    <field name="reference"/>
-                    <field name="phone"/>
-                    <field name="role"/>
-                    <field name="status"/>
-                    &lt;!&ndash;                <field name="member_category"/>&ndash;&gt;
-                    <field name="member_category_id"/>
-                </list>
-            </field>
-        </record>-->
 
     <record id="members_view_partner_form" model="ir.ui.view">
         <field name="name">res.partner.form.inherit</field>
@@ -72,15 +14,16 @@
                             <field name="membership_number_auto" string="Membership Number"/>
                             <field name="id_number" string="ID Number"/>
                             <field name="member_type" string="Member Type"/>
-                            <div class="oe_title">
-                                <h3>Physical Address</h3>
-                            </div>
+
                         </group>
                         <group>
                             <div class="oe_title">
                                 <h3>Personal Information</h3>
                             </div>
                             <!--   <separator string="Personal Information"/> -->
+                            <field name="firstname" string="First Name"/>
+                            <field name="middle_name" string="Middle Name"/>
+                            <field name="lastname" string="Last Name"/>
                             <field name="gender"/>
                             <field name="date_of_birth"/>
                             <field name="place_of_birth"/>
@@ -88,13 +31,69 @@
                             <field name="marital_status"/>
                             <field name="profession"/>
                         </group>
+                        <group>
+                            <div class="oe_title">
+                                <h3>ETHNICITY</h3>
+                            </div>
+                            <field name="member_province_id" string="Province"/>
+                            <field name="member_territory_id" string="Territory"/>
+
+                            <div class="oe_title">
+                                <h3>EDUCATION</h3>
+                            </div>
+                            <field name="education_level"/>
+                            <field name="domain_expertise"/>
+                            <field name="skills"/>
+
+                            <div class="oe_title">
+                                <h3>BRANCHES</h3>
+                            </div>
+<!--                            <field name="interfederation_id"/>
+                            <field name="federation_id"/>
+                            <field name="district_id"/>
+                            <field name="section_id"/>
+                            <field name="cellule_id"/>
+                            <field name="souscellule_id"/>-->
+
+                            <field name="interfederation_id"/>
+
+                            <field name="federation_id"
+                                   modifiers='{"invisible": [["interfederation_id", "=", False]]}'/>
+
+                            <field name="district_id"
+                                   modifiers='{"invisible": [["federation_id", "=", False]]}'/>
+
+                            <field name="section_id"
+                                   modifiers='{"invisible": [["district_id", "=", False]]}'/>
+
+                            <field name="cellule_id"
+                                   modifiers='{"invisible": [["section_id", "=", False]]}'/>
+
+                            <field name="souscellule_id"
+                                   modifiers='{"invisible": [["cellule_id", "=", False]]}'/>
+
+
+
+<!--                            <div class="oe_title">
+                            <h3>Party Related Information</h3>
+                        </div>
+                        <field name="inter_federation"/>
+                        <field name="federation"/>
+                        <field name="section"/>
+                        <field name="cellule"/>
+                        <field name="previous_party_member"/>
+                        <t t-if="record.previous_party_member.raw_value">
+                            <field name="previous_party_name"/>
+                        </t>
+                        <field name="reason_for_joining_acp"/>-->
+                        </group>
                     </group>
                 </div>
             </xpath>
 
             <xpath expr="//field[@name='function']" position="replace">
                 <field name="status"/>
-                <field name="membership_status" readonly="1"/>
+                <!--                <field name="membership_status" readonly="1"/>-->
                 <field name="card_purchased"/>
                 <field name="last_contribution_date"/>
                 <field name="join_date"/>
@@ -132,16 +131,32 @@
             </xpath>
 
 
+            <!--
+                        <xpath expr="//div[contains(@class, 'o_address_format')]" position="before">
+                            <label string="Physical Address" class="fw-bold"/>
+                        </xpath>
+            -->
 
-<!--            <xpath expr="//div[.//field[@name='parent_id']]" position="attributes">
-                <attribute name="invisible">is_company</attribute>
-            </xpath>-->
 
-<!--
-        <xpath expr="//field[@name='parent_id']" position="attributes">
-            <attribute name="domain">[('type', 'in', ('other', 'invoice', 'delivery'))]</attribute>
-        </xpath>
--->
+            <!--
+                        <field name="oe_title" string="Physical Address"/>
+
+                        <div class="oe_title">
+                            <h3>Physical Address</h3>
+                        </div>
+            -->
+
+
+
+            <!--            <xpath expr="//div[.//field[@name='parent_id']]" position="attributes">
+                            <attribute name="invisible">is_company</attribute>
+                        </xpath>-->
+
+            <!--
+                    <xpath expr="//field[@name='parent_id']" position="attributes">
+                        <attribute name="domain">[('type', 'in', ('other', 'invoice', 'delivery'))]</attribute>
+                    </xpath>
+            -->
 
             <!--<xpath expr="//field[@name='parent_id']" position="attributes">
                 <attribute name="string">Organization</attribute>
@@ -156,6 +171,8 @@
 
         </field>
     </record>
+
+
 
 
 </odoo>

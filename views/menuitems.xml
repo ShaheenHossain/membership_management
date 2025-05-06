@@ -8,19 +8,91 @@
     </record>
 -->
 
+
+
+
+     <record id="action_member_souscellule" model="ir.actions.act_window">
+        <field name="name">Sous-Cellule</field>
+        <field name="res_model">membership.souscellule</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+
+    <record id="action_member_cellule" model="ir.actions.act_window">
+        <field name="name">Cellule</field>
+        <field name="res_model">membership.cellule</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+
+
+    <record id="action_member_section" model="ir.actions.act_window">
+        <field name="name">Section</field>
+        <field name="res_model">membership.section</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+
+    <record id="action_member_district" model="ir.actions.act_window">
+        <field name="name">District</field>
+        <field name="res_model">membership.district</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_member_federation" model="ir.actions.act_window">
+        <field name="name">Federation</field>
+        <field name="res_model">membership.federation</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+
+    <record id="action_member_interfederation" model="ir.actions.act_window">
+        <field name="name">Inter Federation</field>
+        <field name="res_model">membership.interfederation</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+
+    <record id="action_member_province" model="ir.actions.act_window">
+        <field name="name">Province</field>
+        <field name="res_model">membership.province</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_member_territory" model="ir.actions.act_window">
+        <field name="name">Territory</field>
+        <field name="res_model">membership.territory</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
     <record id="action_member_categories" model="ir.actions.act_window">
         <field name="name">Categories</field>
         <field name="res_model">membership.member.category</field>
         <field name="view_mode">list,form</field>
     </record>
 
+    <record id="membership.menu_membership_products" model="ir.ui.menu">
+        <field name="name">Membership Fee</field>
+    </record>
 
-<!--
+    <record id="membership.action_membership_products" model="ir.actions.act_window">
+        <field name="name">Membership Fee</field>
+    </record>
+
+    <!--
     <menuitem id="menu_membership_root" name="Membership" web_icon="membership_management,static/description/icon.png" sequence="1"/>
 
     <menuitem id="menu_membership_members" name="Members" parent="menu_membership_root" action="membership_management.action_member"/>
 -->
 
     <menuitem id="menu_membership_category" name="Categories" parent="membership.menu_marketing_config_association" action="membership_management.action_member_categories" sequence="09"/>
+    <menuitem id="menu_membership_province" name="Province" parent="membership.menu_marketing_config_association" action="membership_management.action_member_province" sequence="10"/>
+    <menuitem id="menu_membership_territory" name="Territory" parent="membership.menu_marketing_config_association" action="membership_management.action_member_territory" sequence="11"/>
+    <menuitem id="menu_membership_interfederation" name="Inter-Federation" parent="membership.menu_marketing_config_association" action="membership_management.action_member_interfederation" sequence="12"/>
+    <menuitem id="menu_membership_federation" name="Federation" parent="membership.menu_marketing_config_association" action="membership_management.action_member_federation" sequence="13"/>
+    <menuitem id="menu_membership_district" name="District" parent="membership.menu_marketing_config_association" action="membership_management.action_member_district" sequence="14"/>
+    <menuitem id="menu_membership_section" name="Section" parent="membership.menu_marketing_config_association" action="membership_management.action_member_section" sequence="15"/>
+    <menuitem id="menu_membership_cellule" name="Cellule" parent="membership.menu_marketing_config_association" action="membership_management.action_member_cellule" sequence="16"/>
+    <menuitem id="menu_membership_souscellule" name="Sous-Cellule" parent="membership.menu_marketing_config_association" action="membership_management.action_member_souscellule" sequence="17"/>
 
 </odoo>

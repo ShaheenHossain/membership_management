@@ -2,3 +2,11 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_membership_tier,membership.tier,model_membership_tier,,1,1,1,1
 access_communication_preference,membership.communication.preference,model_membership_communication_preference,,1,1,1,1
 access_membership_member_category,membership.member.category,model_membership_member_category,,1,1,1,1
+access_membership_province,membership.province,model_membership_province,,1,1,1,1
+access_membership_territory,membership.territory,model_membership_territory,,1,1,1,1
+access_membership_interfederation,membership.interfederation,model_membership_interfederation,,1,1,1,1
+access_membership_federation,membership.federation,model_membership_federation,,1,1,1,1
+access_membership_district,membership.district,model_membership_district,,1,1,1,1
+access_membership_section,membership.section,model_membership_section,,1,1,1,1
+access_membership_cellule,membership.cellule,model_membership_cellule,,1,1,1,1
+access_membership_souscellule,membership.souscellule,model_membership_souscellule,,1,1,1,1
