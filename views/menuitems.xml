@@ -65,19 +65,80 @@
         <field name="view_mode">list,form</field>
     </record>
 
-    <record id="action_member_categories" model="ir.actions.act_window">
+<!--    <record id="action_member_categories" model="ir.actions.act_window">
         <field name="name">Categories</field>
         <field name="res_model">membership.member.category</field>
         <field name="view_mode">list,form</field>
-    </record>
+    </record>-->
 
     <record id="membership.menu_membership_products" model="ir.ui.menu">
-        <field name="name">Membership Fee</field>
+        <field name="name">Categories</field>
     </record>
 
     <record id="membership.action_membership_products" model="ir.actions.act_window">
         <field name="name">Membership Fee</field>
     </record>
+
+<record id="membership_inherited_view" model="ir.ui.view">
+    <field name="name">product.template.form.inherit.membership</field>
+    <field name="model">product.template</field>
+    <field name="inherit_id" ref="membership.membership_products_form"/>
+    <field name="arch" type="xml">
+
+        <!-- Change 'Product Name' label to 'Category' -->
+        <xpath expr="//label[@for='name']" position="attributes">
+            <attribute name="string">Category</attribute>
+        </xpath>
+
+        <!-- Hide the label for membership_date_from -->
+        <xpath expr="//label[@for='membership_date_from']" position="attributes">
+            <attribute name="invisible">1</attribute>
+        </xpath>
+
+        <!-- Hide the entire div containing both membership_date_from and membership_date_to -->
+        <xpath expr="//div[@class='o_row'][field[@name='membership_date_from']]" position="attributes">
+            <attribute name="invisible">1</attribute>
+        </xpath>
+
+        <!-- Make both fields invisible and readonly (redundant but safe) -->
+        <xpath expr="//field[@name='membership_date_from']" position="attributes">
+            <attribute name="invisible">1</attribute>
+            <attribute name="readonly">1</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='membership_date_to']" position="attributes">
+            <attribute name="invisible">1</attribute>
+            <attribute name="readonly">1</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='property_account_income_id']" position="attributes">
+            <attribute name="invisible">1</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='taxes_id']" position="attributes">
+            <attribute name="invisible">1</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='categ_id']" position="attributes">
+            <attribute name="invisible">1</attribute>
+        </xpath>
+
+        <xpath expr="//label[@for='description_sale']" position="attributes">
+            <attribute name="invisible">1</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='description_sale']" position="attributes">
+            <attribute name="invisible">1</attribute>
+        </xpath>
+
+        <xpath expr="//group[@name='membership_details']/field[@name='list_price']" position="replace"/>
+
+        <xpath expr="//group[@name='product_details']/field[@name='default_code']" position="before">
+            <field name="list_price" string="Fee"/>
+        </xpath>
+
+    </field>
+</record>
 
     <!--
     <menuitem id="menu_membership_root" name="Membership" web_icon="membership_management,static/description/icon.png" sequence="1"/>
@@ -85,7 +146,7 @@
     <menuitem id="menu_membership_members" name="Members" parent="menu_membership_root" action="membership_management.action_member"/>
 -->
 
-    <menuitem id="menu_membership_category" name="Categories" parent="membership.menu_marketing_config_association" action="membership_management.action_member_categories" sequence="09"/>
+<!--    <menuitem id="menu_membership_category" name="Categories" parent="membership.menu_marketing_config_association" action="membership_management.action_member_categories" sequence="09"/>-->
     <menuitem id="menu_membership_province" name="Province" parent="membership.menu_marketing_config_association" action="membership_management.action_member_province" sequence="10"/>
     <menuitem id="menu_membership_territory" name="Territory" parent="membership.menu_marketing_config_association" action="membership_management.action_member_territory" sequence="11"/>
     <menuitem id="menu_membership_interfederation" name="Inter-Federation" parent="membership.menu_marketing_config_association" action="membership_management.action_member_interfederation" sequence="12"/>
