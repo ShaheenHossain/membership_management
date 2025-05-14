@@ -5,6 +5,8 @@ import random
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
+    father_name = fields.Char("Father's Name")
+    mother_name = fields.Char("Mother's Name")
 
     firstname = fields.Char("First name", index=True)
     lastname = fields.Char("Last name", index=True)
@@ -18,8 +20,25 @@ class ResPartner(models.Model):
     souscellule_id = fields.Many2one('membership.souscellule', string='Sous-Cellule')
 
 
+
+    card_sequence = fields.Integer(string='Card Re-Issue Count', default=0, readonly=True)
     card_purchased = fields.Boolean(string='Card Purchased', default=False)
     last_contribution_date = fields.Date(string='Last Contribution Date')
+    card_issue_date = fields.Date(string='Last Card Issue Date')
+    card_lost_date = fields.Date(string='Last Card Lost Date')
+
+    def action_report_card_lost(self):
+        """Call this method when user reports a lost card."""
+        for rec in self:
+            rec.card_sequence += 1
+            rec.card_issue_date = fields.Date.today()
+            rec.card_lost_date = fields.Date.today()
+            rec.card_purchased = True
+
+
+
+
+
 
     # Additional personal fields
     gender = fields.Selection([
