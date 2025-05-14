@@ -100,7 +100,7 @@
                 </div>
             </xpath>
 
-        <xpath expr="//div[hasclass('o_row')]" position="replace"/>
+<!--        <xpath expr="//div[hasclass('o_row')]" position="replace"/>-->
 
 
             <xpath expr="//field[@name='function']" position="replace">
