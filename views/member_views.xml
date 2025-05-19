@@ -11,114 +11,36 @@
                 <div>
                     <group>
                         <group>
-                            <field name="membership_number_auto" string="Membership Number"/>
+
+                            <field name="membership_number_auto" nolabel="1" class="h2 bold"/>
                             <field name="id_number" string="ID Number"/>
-                            <!--                            <field name="member_type" string="Member Type"/>-->
-                            <!--                            <div class="oe_title">
-                                                            <h3>ETHNICITY</h3>
-                                                        </div>
-                                                        <field name="member_province_id" string="Province"/>
-                                                        <field name="member_territory_id" string="Territory"/>-->
-
-                            <!--
-                                                        <div class="oe_title">
-                                                            <h3>EDUCATION</h3>
-                                                        </div>
-                                                        <field name="education_level"/>
-                                                        <field name="domain_expertise"/>
-                                                        <field name="skills"/>
-                            -->
-
-
                         </group>
                         <group>
-                            <!--
-                                                        <div class="oe_title">
-                                                            <h3>Personal Information</h3>
-                                                        </div>
-                            -->
-                            <!--   <separator string="Personal Information"/> -->
-                            <!--
-                                                        <field name="firstname" string="First Name"/>
-                                                        <field name="middle_name" string="Middle Name"/>
-                                                        <field name="lastname" string="Last Name"/>
-                            -->
-                            <!--                            <field name="gender"/>
-                                                        <field name="date_of_birth"/>
-                                                        <field name="place_of_birth"/>
-                                                        <field name="nationality"/>
-                                                        <field name="marital_status"/>
-                                                        <field name="profession"/>-->
-                        </group>
-                        <group>
-                            <!--
-                                                        <div class="oe_title">
-                                                            <h3>BRANCHES</h3>
-                                                        </div>
-                                                        <field name="interfederation_id"/>
-                                                            <field name="federation_id"/>
-                                                            <field name="district_id"/>
-                                                            <field name="section_id"/>
-                                                            <field name="cellule_id"/>
-                                                            <field name="souscellule_id"/>-->
-
-                            <!--
-
-                                                        <field name="interfederation_id"/>
-
-                                                        <field name="federation_id"
-                                                               modifiers='{"invisible": [["interfederation_id", "=", False]]}'/>
-
-                                                        <field name="district_id"
-                                                               modifiers='{"invisible": [["federation_id", "=", False]]}'/>
-
-                                                        <field name="section_id"
-                                                               modifiers='{"invisible": [["district_id", "=", False]]}'/>
-
-                                                        <field name="cellule_id"
-                                                               modifiers='{"invisible": [["section_id", "=", False]]}'/>
-
-                                                        <field name="souscellule_id"
-                                                               modifiers='{"invisible": [["cellule_id", "=", False]]}'/>
-                            -->
-
-
-                            <!--                            <div class="oe_title">
-                                                        <h3>Party Related Information</h3>
-                                                    </div>
-                                                    <field name="inter_federation"/>
-                                                    <field name="federation"/>
-                                                    <field name="section"/>
-                                                    <field name="cellule"/>
-                                                    <field name="previous_party_member"/>
-                                                    <t t-if="record.previous_party_member.raw_value">
-                                                        <field name="previous_party_name"/>
-                                                    </t>
-                                                    <field name="reason_for_joining_acp"/>-->
                         </group>
                     </group>
                 </div>
             </xpath>
 
-<!--        <xpath expr="//div[hasclass('o_row')]" position="replace"/>-->
+
+<!--
+            <xpath expr="//label[@for='vat' and @string='Tax ID']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+-->
+
+
+            <!--        <xpath expr="//div[hasclass('o_row')]" position="replace"/>-->
 
 
             <xpath expr="//field[@name='function']" position="replace">
-                <!--                <field name="status"/>
-                                &lt;!&ndash;                <field name="membership_status" readonly="1"/>&ndash;&gt;
-                                <field name="card_purchased"/>
-                                <field name="last_contribution_date"/>
-                                <field name="join_date"/>
-                                <field name="exit_reason"/>-->
             </xpath>
 
-            <xpath expr="//field[@name='vat']" position="before">
-                <!--                <field name="member_category_id" string="Member Category"/>-->
-                <!--                <field name="reference" string="Reference"/>
-                                <field name="role" string="Role"/>
 
-                                <field name="communication_preference_ids"/>-->
+<!--
+            <xpath expr="//label[@for='vat']" position="attributes">
+                <attribute name="invisible">1</attribute>
             </xpath>
+-->
 
 
             <xpath expr="//field[@name='vat']" position="attributes">
@@ -133,9 +55,11 @@
                 <attribute name="invisible">1</attribute>
             </xpath>
 
+<!--
             <xpath expr="//field[@name='company_type']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
+-->
 
             <xpath expr="//field[@name='type']" position="attributes">
                 <attribute name="default">other</attribute>
@@ -181,18 +105,18 @@
                        <attribute name="string">Designation</attribute>
                    </xpath>-->
 
-        </field>
-    </record>
+<!--            <xpath expr="//page[@name='membership']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>-->
 
-    <record model="ir.ui.view" id="view_partner_personal_info">
-        <field name="name">res.partner.form.inherit</field>
-        <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_partner_form"/>
-        <field name="arch" type="xml">
-            <notebook position="inside">
+
+            <xpath expr="//page[@name='contact_addresses']" position="after">
                 <page string="Personal Info" name="member_info">
                     <group>
                         <group>
+                            <div class="oe_title">
+                                <h3>Personal Information</h3>
+                            </div>
                             <field name="gender"/>
                             <field name="date_of_birth"/>
                             <field name="place_of_birth"/>
@@ -200,7 +124,6 @@
                             <field name="marital_status"/>
                             <field name="profession"/>
                             <field name="member_type" string="Member Type"/>
-
                         </group>
                         <group>
                             <field name="father_name"/>
@@ -209,19 +132,104 @@
                         <field name="communication_preference_ids"/>
                     </group>
                 </page>
-            </notebook>
+            </xpath>
+
+
+            <xpath expr="//page[@name='sales_purchases']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
         </field>
     </record>
 
-    <record model="ir.ui.view" id="view_partner_branches">
+
+
+
+    <record model="ir.ui.view" id="view_membership_account_form">
         <field name="name">res.partner.form.inherit</field>
         <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="inherit_id" ref="account.view_partner_property_form"/>
         <field name="arch" type="xml">
-            <notebook position="inside">
+
+        <xpath expr="//page[@name='accounting']" position="attributes">
+            <attribute name="string">Contribution</attribute>
+        </xpath>
+
+        </field>
+    </record>
+
+
+
+        <record id="view_partner_form_inherit_contributions" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit.contributions</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="account.partner_view_buttons"/>
+            <field name="arch" type="xml">
+                <xpath expr="//span[@class='o_stat_text' and contains(text(), 'Invoiced')]" position="replace">
+                    <span class="o_stat_text">Contributions</span>
+                </xpath>
+            </field>
+        </record>
+
+
+
+    <record model="ir.ui.view" id="view_membership_sales_stateinfo_form">
+        <field name="name">res.partner.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="sale.res_partner_view_buttons"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//div[@name='button_box']/button[@name='action_view_sale_order']" position="replace">
+                <!-- Replace only the Sales button -->
+                <button class="oe_stat_button" type="object" name="action_view_sale_order"
+                        groups="sales_team.group_sale_salesman"
+                        icon="fa-usd" invisible="1">
+                    <field name="sale_order_count" string="Sales" widget="statinfo"/>
+                </button>
+            </xpath>
+
+        </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="vendor_stateinfo_hide_form">
+        <field name="name">res.partner.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="purchase.res_partner_view_purchase_account_buttons"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']/button[field[@name='supplier_invoice_count']]" position="replace">
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="res_partner_hide_vendor_delay_button" model="ir.ui.view">
+        <field name="name">res.partner.hide.vendor.delay.button</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="purchase_stock.res_partner_view_purchase_buttons_inherit"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='%(action_purchase_vendor_delay_report)d']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+
+
+    <record model="ir.ui.view" id="view_membership_branch_form">
+        <field name="name">res.partner.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="membership.view_partner_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//page[@name='membership']" position="after">
                 <page string="Branches" name="member_branches">
                     <group>
                         <group>
+                            <div class="oe_title">
+                                <h3>Branches</h3>
+                            </div>
+
                             <field name="interfederation_id"/>
                             <field name="federation_id"/>
                             <field name="district_id"/>
@@ -243,45 +251,88 @@
                         </group>
                     </group>
                 </page>
-            </notebook>
-        </field>
-    </record>
 
-    <record model="ir.ui.view" id="view_partner_ethniciy">
-        <field name="name">res.partner.form.inherit</field>
-        <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_partner_form"/>
-        <field name="arch" type="xml">
-            <notebook position="inside">
-                <page string="Ethnicity" name="member_ethnicity">
+                <page string="Origin" name="member_ethnicity">
                     <group>
                         <group>
+                            <div class="oe_title">
+                                <h3>Origin</h3>
+                            </div>
                             <field name="member_province_id" string="Province"/>
                             <field name="member_territory_id" string="Territory"/>
                         </group>
                     </group>
                 </page>
-            </notebook>
-        </field>
-    </record>
 
-    <record model="ir.ui.view" id="view_partner_education">
-        <field name="name">res.partner.form.inherit</field>
-        <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_partner_form"/>
-        <field name="arch" type="xml">
-            <notebook position="inside">
                 <page string="Education" name="member_education">
                     <group>
                         <group>
+                            <div class="oe_title">
+                                <h3>Education</h3>
+                            </div>
                             <field name="education_level"/>
                             <field name="domain_expertise"/>
                             <field name="skills"/>
                         </group>
                     </group>
                 </page>
-            </notebook>
+            </xpath>
+
+            <xpath expr="//page[@name='membership']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+
+
+            <xpath expr="//page[@name='sales_purchases']" position="before">
+                <page string="Membership" name="membership">
+                    <group>
+                        <group>
+                            <field name="free_member"/>
+                            <label for="membership_state"/>
+                            <div class="d-flex align-items-center justify-content-start gap-3">
+                                <field name="membership_state" class="oe_inline mb-0"/>
+                                <button name="312" type="action" string="Buy Membership" invisible="free_member" class="oe_link"/>
+                            </div>
+                        </group>
+                        <group>
+                            <field name="associate_member" invisible="free_member"/>
+                            <field name="membership_start" invisible="not membership_start"/>
+                            <field name="membership_stop" invisible="not membership_stop"/>
+                            <field name="membership_cancel" invisible="not membership_cancel"/>
+                        </group>
+                    </group>
+                    <field name="member_lines" nolabel="1" colspan="4" readonly="1">
+                        <list string="Memberships">
+                            <field name="date"/>
+                            <field name="membership_id"/>
+                            <field name="member_price"/>
+                            <field name="account_invoice_id"/>
+                            <field name="state"/>
+                        </list>
+                        <form string="Memberships">
+                            <group col="2">
+                                <group>
+                                    <field name="membership_id"/>
+                                    <field name="date"/>
+                                    <field name="state"/>
+                                </group>
+                                <group>
+                                    <field name="member_price"/>
+                                    <field name="account_invoice_id" context="{'form_view_ref': 'account.view_move_form'}"/>
+                                </group>
+                            </group>
+                        </form>
+                    </field>
+
+                </page>
+            </xpath>
+
+
+
+
         </field>
     </record>
+
 
 </odoo>

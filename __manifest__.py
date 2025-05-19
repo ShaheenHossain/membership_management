@@ -6,7 +6,7 @@
     'category': 'Membership',
     'author': 'Md. Shaheen Hossain',
     'website': 'https://eagle-erp.com',
-    'depends': ['base', 'mail', 'web', 'membership'],
+    'depends': ['base', 'mail', 'web', 'sale', 'membership'],
     'data': [
         # 'data/membership.member.category.csv',
         'security/ir.model.access.csv',
