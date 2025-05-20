@@ -202,7 +202,7 @@
         </field>
     </record>
 
-
+<!--
     <record id="res_partner_hide_vendor_delay_button" model="ir.ui.view">
         <field name="name">res.partner.hide.vendor.delay.button</field>
         <field name="model">res.partner</field>
@@ -212,7 +212,7 @@
                 <attribute name="invisible">1</attribute>
             </xpath>
         </field>
-    </record>
+    </record>-->
 
 
 
